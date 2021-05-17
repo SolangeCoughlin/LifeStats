@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_map"
+    app:startDestination="@id/entryFragment">
+
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.example.lifestats.fragments.EntryFragment"
+        android:label="fragment_entry"
+        tools:layout="@layout/fragment_entry" >
+        <action
+            android:id="@+id/action_entryFragment_to_addEntryFragment"
+            app:destination="@id/addEntryFragment" />
+        <action
+            android:id="@+id/action_entryFragment_to_updateEntryFragment"
+            app:destination="@id/updateEntryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEntryFragment"
+        android:name="com.example.lifestats.fragments.addEntryFragment"
+        android:label="fragment_add_entry"
+        tools:layout="@layout/fragment_add_entry" >
+        <action
+            android:id="@+id/action_addEntryFragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateEntryFragment"
+        android:name="com.example.lifestats.fragments.updateEntryFragment"
+        android:label="updateEntryFragment" >
+        <action
+            android:id="@+id/action_updateEntryFragment_to_entryFragment"
+            app:destination="@id/entryFragment" />
+        <argument
+            android:name="currentEntry"
+            app:argType="com.example.lifestats.data.Entry" />
+    </fragment>
+</navigation>

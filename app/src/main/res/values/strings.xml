@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Life Stats</string>
+    <string name="description">Description</string>
+    <string name="value_prompt">Enter a value</string>
+    <string name="add_btn_text">Add</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="update_btn">Update</string>
+</resources>
