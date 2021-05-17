@@ -10,5 +10,6 @@ import kotlinx.android.parcel.Parcelize
 data class Entry (
     @PrimaryKey(autoGenerate = true)
     val entryId: Int,
+    val entry_value: Long,
     val descrip: String
 ): Parcelable

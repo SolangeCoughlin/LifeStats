@@ -38,7 +38,7 @@ class EntryFragment() : Fragment() {
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel::class.java)
 
         //use view model to get all entries and set an observer on it
-        entryViewModel.getAllEntryWithEntryValue.observe(viewLifecycleOwner,
+        entryViewModel.getAllEntries.observe(viewLifecycleOwner,
             Observer { entry -> adapter.setData(entry)})
 
         view.new_entry.setOnClickListener(){

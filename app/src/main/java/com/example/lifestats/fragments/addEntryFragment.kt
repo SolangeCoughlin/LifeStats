@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.lifestats.R
 import com.example.lifestats.data.Entry
-import com.example.lifestats.data.EntryValue
 import com.example.lifestats.data.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_add_entry.*
 import kotlinx.android.synthetic.main.fragment_add_entry.view.*
@@ -39,10 +38,8 @@ class addEntryFragment : Fragment() {
         val value = value_box.text.toString().toLong()
         val val_descrip = description_box.text.toString()
 
-        val entry = Entry(0,val_descrip)
-        val entryValue = EntryValue(0,entry.entryId,value)
-        //entryViewModel.addEntry(entry)
-        //entryViewModel.addEntryValue(entryValue)
+        val entry = Entry(0,value,val_descrip)
+        entryViewModel.addEntry(entry)
         findNavController().navigate(R.id.action_addEntryFragment_to_entryFragment)
 
         Toast.makeText(requireContext(),"Successfully added!",Toast.LENGTH_SHORT).show()

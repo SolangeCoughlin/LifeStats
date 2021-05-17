@@ -6,18 +6,15 @@ import androidx.room.*
 @Dao
 interface EntryDAO {
 
-    @Insert( onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addEntry(entry: Entry)
 
     //Week 7 addition - not working
 //    @Insert(onConflict = OnConflictStrategy.IGNORE)
 //    suspend fun addEntryWithEntryValues(entryWithEntryValues: EntryWithEntryValues)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addEntryValue(entryValue: EntryValue)
-
     @Delete
-    suspend fun deleteEntry(entry:Entry)
+    suspend fun deleteEntry(entry: Entry)
 
     @Update
     suspend fun updateEntry(entry: Entry)
@@ -25,7 +22,4 @@ interface EntryDAO {
     @Query("SELECT * FROM entry_table ORDER BY entryId ASC")
     fun getAllEntries(): LiveData<List<Entry>>
 
-    @Transaction
-    @Query("SELECT * FROM entry_table")
-    fun getAllEntriesWithValues(): LiveData<List<EntryWithEntryValue>>
 }
