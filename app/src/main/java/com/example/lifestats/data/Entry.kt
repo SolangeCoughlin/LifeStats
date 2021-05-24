@@ -11,5 +11,6 @@ data class Entry (
     @PrimaryKey(autoGenerate = true)
     val entryId: Int,
     val entry_value: Long,
+    val date: String,
     val descrip: String
 ): Parcelable

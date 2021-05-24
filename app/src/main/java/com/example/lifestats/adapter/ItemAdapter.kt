@@ -18,7 +18,7 @@ class ItemAdapter ():
 
     class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
 
-        internal var entryId = view.findViewById<View>(R.id.entry_id_text) as TextView
+        internal var entryDate = view.findViewById<View>(R.id.entry_date) as TextView
         internal var entryVal = view.findViewById<View>(R.id.entry_value) as TextView
         internal var entryDescrip = view.findViewById<View>(R.id.entry_description) as TextView
 
@@ -31,7 +31,7 @@ class ItemAdapter ():
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val currentEntry = listItems[position]
-        holder.entryId.text =  currentEntry.entryId.toString()
+        holder.entryDate.text =  currentEntry.date.toString()
         holder.entryVal.text = currentEntry.entry_value.toString()
         holder.entryDescrip.text = currentEntry.descrip
 

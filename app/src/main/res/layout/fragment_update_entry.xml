@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".fragments.addEntryFragment">
 
+
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:hint="Date"
+        app:layout_constraintBottom_toBottomOf="@+id/cal_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cal_icon"
+        app:layout_constraintTop_toTopOf="@+id/cal_icon" />
+
     <EditText
         android:id="@+id/update_description_box"
         android:layout_width="0dp"
@@ -23,15 +35,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="150dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="@string/value_prompt"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_description_box"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cal_icon" />
 
     <Button
         android:id="@+id/update_button"
@@ -53,6 +63,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_button" />
+
+    <ImageView
+        android:id="@+id/cal_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_baseline_calendar_today_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

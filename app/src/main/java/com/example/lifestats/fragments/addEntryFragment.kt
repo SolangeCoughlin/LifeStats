@@ -13,6 +13,7 @@ import com.example.lifestats.data.Entry
 import com.example.lifestats.data.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_add_entry.*
 import kotlinx.android.synthetic.main.fragment_add_entry.view.*
+import java.util.*
 
 class addEntryFragment : Fragment() {
 
@@ -37,8 +38,30 @@ class addEntryFragment : Fragment() {
     private fun insertEntry() {
         val value = value_box.text.toString().toLong()
         val val_descrip = description_box.text.toString()
+        val currentDate = Calendar.getInstance()
+        val day = currentDate.get(Calendar.DAY_OF_MONTH)
+        val month = currentDate.get(Calendar.MONTH) + 1
+        val year = currentDate.get(Calendar.YEAR)
+        var dayString: String
+        var monthString: String
 
-        val entry = Entry(0,value,val_descrip)
+
+        if (day < 10){
+            dayString = "0" + day.toString()
+        }
+        else{
+            dayString = day.toString()
+        }
+
+        if (month < 10){
+            monthString = "0" + month.toString()
+        }
+        else{
+            monthString = month.toString()
+        }
+
+        val date = monthString + dayString + year.toString()
+        val entry = Entry(0,value,date,val_descrip)
         entryViewModel.addEntry(entry)
         findNavController().navigate(R.id.action_addEntryFragment_to_entryFragment)
 
