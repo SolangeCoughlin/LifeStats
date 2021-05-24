@@ -39,29 +39,13 @@ class addEntryFragment : Fragment() {
         val value = value_box.text.toString().toLong()
         val val_descrip = description_box.text.toString()
         val currentDate = Calendar.getInstance()
+        val hour = currentDate.get(Calendar.HOUR_OF_DAY)
+        val minutes = currentDate.get(Calendar.MINUTE)
         val day = currentDate.get(Calendar.DAY_OF_MONTH)
-        val month = currentDate.get(Calendar.MONTH) + 1
+        val month = currentDate.get(Calendar.MONTH)
         val year = currentDate.get(Calendar.YEAR)
-        var dayString: String
-        var monthString: String
 
-
-        if (day < 10){
-            dayString = "0" + day.toString()
-        }
-        else{
-            dayString = day.toString()
-        }
-
-        if (month < 10){
-            monthString = "0" + month.toString()
-        }
-        else{
-            monthString = month.toString()
-        }
-
-        val date = monthString + dayString + year.toString()
-        val entry = Entry(0,value,date,val_descrip)
+        val entry = Entry(0,value,minutes, hour, day, month, year,val_descrip)
         entryViewModel.addEntry(entry)
         findNavController().navigate(R.id.action_addEntryFragment_to_entryFragment)
 

@@ -31,7 +31,17 @@ class ItemAdapter ():
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val currentEntry = listItems[position]
-        holder.entryDate.text =  currentEntry.date.toString()
+        var hour_string = currentEntry.hour.toString()
+        var minute_string = currentEntry.minutes.toString()
+        if (currentEntry.hour < 10){
+            hour_string = "0" + currentEntry.hour
+        }
+
+        if (currentEntry.minutes < 10) {
+            minute_string = "0" + currentEntry.minutes.toString()
+        }
+        val date = (currentEntry.month + 1).toString() + "/" + currentEntry.day.toString() + ", " + hour_string + ":" + minute_string
+        holder.entryDate.text =  date
         holder.entryVal.text = currentEntry.entry_value.toString()
         holder.entryDescrip.text = currentEntry.descrip
 
