@@ -21,6 +21,7 @@ class ItemAdapter ():
         internal var entryDate = view.findViewById<View>(R.id.entry_date) as TextView
         internal var entryVal = view.findViewById<View>(R.id.entry_value) as TextView
         internal var entryDescrip = view.findViewById<View>(R.id.entry_description) as TextView
+        internal var units = view.findViewById<View>(R.id.units) as TextView
 
     }
 
@@ -44,6 +45,7 @@ class ItemAdapter ():
         holder.entryDate.text =  date
         holder.entryVal.text = currentEntry.entry_value.toString()
         holder.entryDescrip.text = currentEntry.descrip
+        holder.units.text = currentEntry.value_unit
 
         holder.itemView.entry_row_layout.setOnClickListener(){
             val action = EntryFragmentDirections.actionEntryFragmentToUpdateEntryFragment(currentEntry)

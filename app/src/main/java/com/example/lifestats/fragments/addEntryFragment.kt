@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -28,6 +29,7 @@ class addEntryFragment : Fragment() {
 
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel::class.java)
 
+
         view.add_button.setOnClickListener(){
             insertEntry()
         }
@@ -37,6 +39,7 @@ class addEntryFragment : Fragment() {
 
     private fun insertEntry() {
         val value = value_box.text.toString().toLong()
+        val value_unit = unit_spinner.selectedItem.toString()
         val val_descrip = description_box.text.toString()
         val currentDate = Calendar.getInstance()
         val hour = currentDate.get(Calendar.HOUR_OF_DAY)
@@ -45,9 +48,10 @@ class addEntryFragment : Fragment() {
         val month = currentDate.get(Calendar.MONTH)
         val year = currentDate.get(Calendar.YEAR)
 
-        val entry = Entry(0,value,minutes, hour, day, month, year,val_descrip)
+        val entry = Entry(0,value, value_unit, minutes, hour, day, month, year,val_descrip)
         entryViewModel.addEntry(entry)
         findNavController().navigate(R.id.action_addEntryFragment_to_entryFragment)
+
 
         Toast.makeText(requireContext(),"Successfully added!",Toast.LENGTH_SHORT).show()
 

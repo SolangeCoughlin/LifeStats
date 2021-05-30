@@ -11,6 +11,7 @@ data class Entry (
     @PrimaryKey(autoGenerate = true)
     val entryId: Int,
     val entry_value: Long,
+    val value_unit: String,
     val minutes: Int,
     val hour: Int,
     val day: Int,

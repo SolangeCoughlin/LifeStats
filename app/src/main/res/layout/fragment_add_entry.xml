@@ -10,11 +10,22 @@
         android:id="@+id/description_box"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/description"
         android:inputType="textShortMessage"
-        app:layout_constraintEnd_toEndOf="@+id/value_box"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/value_box"
+        app:layout_constraintTop_toBottomOf="@+id/unit_spinner" />
+
+    <Spinner
+        android:id="@+id/unit_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:entries="@array/units"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/value_box"
         app:layout_constraintTop_toBottomOf="@+id/value_box" />
 

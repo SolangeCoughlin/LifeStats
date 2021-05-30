@@ -40,6 +40,7 @@ class updateEntryFragment : Fragment() {
 
         view.update_value_box.setText(args.currentEntry.entry_value.toString())
         view.update_description_box.setText(args.currentEntry.descrip)
+        view.value_units.setText(args.currentEntry.value_unit)
 
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel::class.java)
 
@@ -99,6 +100,7 @@ class updateEntryFragment : Fragment() {
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
                 update_value,
+                args.currentEntry.value_unit,
                 args.currentEntry.minutes,
                 args.currentEntry.hour,
                 args.currentEntry.day,
@@ -115,6 +117,7 @@ class updateEntryFragment : Fragment() {
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
                 update_value,
+                args.currentEntry.value_unit,
                 args.currentEntry.minutes,
                 args.currentEntry.hour,
                 new_day,
@@ -130,6 +133,7 @@ class updateEntryFragment : Fragment() {
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
                 update_value,
+                args.currentEntry.value_unit,
                 new_minute,
                 new_hour,
                 args.currentEntry.day,
@@ -145,6 +149,7 @@ class updateEntryFragment : Fragment() {
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
                 update_value,
+                args.currentEntry.value_unit,
                 new_minute,
                 new_hour,
                 new_day,
