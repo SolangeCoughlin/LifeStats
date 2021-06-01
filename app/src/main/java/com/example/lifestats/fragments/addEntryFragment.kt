@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.lifestats.R
 import com.example.lifestats.data.Entry
+import com.example.lifestats.data.EntryValue
 import com.example.lifestats.data.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_add_entry.*
 import kotlinx.android.synthetic.main.fragment_add_entry.view.*
@@ -48,8 +49,10 @@ class addEntryFragment : Fragment() {
         val month = currentDate.get(Calendar.MONTH)
         val year = currentDate.get(Calendar.YEAR)
 
-        val entry = Entry(0,value, value_unit, minutes, hour, day, month, year,val_descrip)
+        val entry = Entry(0, minutes, hour, day, month, year,val_descrip)
+        val entryValue = EntryValue(0,entry.entryId,value, value_unit)
         entryViewModel.addEntry(entry)
+        entryViewModel.addEntryValue(entryValue)
         findNavController().navigate(R.id.action_addEntryFragment_to_entryFragment)
 
 

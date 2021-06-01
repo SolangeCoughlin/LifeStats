@@ -39,6 +39,9 @@
         <argument
             android:name="currentEntry"
             app:argType="com.example.lifestats.data.Entry" />
+        <argument
+            android:name="currentEntryValue"
+            app:argType="com.example.lifestats.data.EntryValue[]" />
     </fragment>
     <fragment
         android:id="@+id/dashboard"
