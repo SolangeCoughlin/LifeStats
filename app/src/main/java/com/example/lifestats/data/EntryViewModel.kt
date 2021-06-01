@@ -43,4 +43,10 @@ class EntryViewModel(application: Application): AndroidViewModel(application) {
             repository.deleteEntry(entry)
         }
     }
+
+    fun getDates(day: Int, month: Int, year: Int){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getDates(day, month, year)
+        }
+    }
 }

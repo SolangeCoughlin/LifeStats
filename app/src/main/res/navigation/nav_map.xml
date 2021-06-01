@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_map"
-    app:startDestination="@id/entryFragment">
+    app:startDestination="@id/dashboard">
 
     <fragment
         android:id="@+id/entryFragment"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_entryFragment_to_updateEntryFragment"
             app:destination="@id/updateEntryFragment" />
+        <action
+            android:id="@+id/action_entryFragment_to_dashboard"
+            app:destination="@id/dashboard" />
     </fragment>
     <fragment
         android:id="@+id/addEntryFragment"
@@ -36,5 +39,14 @@
         <argument
             android:name="currentEntry"
             app:argType="com.example.lifestats.data.Entry" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.example.lifestats.fragments.dashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_entryFragment"
+            app:destination="@id/entryFragment" />
     </fragment>
 </navigation>
