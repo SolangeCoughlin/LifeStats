@@ -9,9 +9,9 @@ interface EntryDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addEntry(entry: Entry)
 
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addEntryValue(entryValues: EntryValue)
+    //Week 7 addition - not working
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun addEntryWithEntryValues(entryWithEntryValues: EntryWithEntryValues)
 
     @Delete
     suspend fun deleteEntry(entry: Entry)
@@ -19,15 +19,8 @@ interface EntryDAO {
     @Update
     suspend fun updateEntry(entry: Entry)
 
-    @Update
-    suspend fun updateEntryValue(entryValue: EntryValue)
-
-//    @Query("SELECT * FROM entry_table ORDER BY entryId ASC")
-//    fun getAllEntries(): LiveData<List<Entry>>
-
     @Query("SELECT * FROM entry_table ORDER BY entryId ASC")
-    @Transaction
-    fun getAllEntries(): LiveData<List<EntryWithValues>>
+    fun getAllEntries(): LiveData<List<Entry>>
 
     @Query("SELECT * FROM entry_table WHERE day = :day AND month = :month AND year =:year")
     fun getDates(day: Int, month: Int,year: Int): LiveData<List<Entry>>

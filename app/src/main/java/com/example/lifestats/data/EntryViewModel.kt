@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class EntryViewModel(application: Application): AndroidViewModel(application) {
-    val getAllEntries: LiveData<List<EntryWithValues>>
+    val getAllEntries: LiveData<List<Entry>>
     //val getAllEntryWithEntryValue: LiveData<List<EntryWithEntryValue>>
     private val repository: EntryRepository
 
@@ -25,12 +25,6 @@ class EntryViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun addEntryValue(entryValue: EntryValue){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.addEntryValue(entryValue)
-        }
-    }
-
     // added Week 7 - not working
 //    fun addEntryWithEntryValue(entry:Entry, entryValue: EntryValue){
 //        viewModelScope.launch(Dispatchers.IO){
@@ -41,12 +35,6 @@ class EntryViewModel(application: Application): AndroidViewModel(application) {
     fun updateEntry(entry: Entry){
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateEntry(entry)
-        }
-    }
-
-    fun updateEntryValue(entryValue: EntryValue){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.updateEntryValue(entryValue)
         }
     }
 

@@ -16,7 +16,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.lifestats.R
 import com.example.lifestats.data.Entry
-import com.example.lifestats.data.EntryValue
 import com.example.lifestats.data.EntryViewModel
 import kotlinx.android.synthetic.main.fragment_update_entry.*
 import kotlinx.android.synthetic.main.fragment_update_entry.view.*
@@ -39,11 +38,9 @@ class updateEntryFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update_entry, container, false)
 
-        //view.update_value_box.setText(args.currentEntryValue.entry_value.toString())
+        view.update_value_box.setText(args.currentEntry.entry_value.toString())
         view.update_description_box.setText(args.currentEntry.descrip)
-        for (item in args.currentEntryValue) {
-            view.value_units.setText(item.value_unit)
-        }
+        view.value_units.setText(args.currentEntry.value_unit)
 
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel::class.java)
 
@@ -102,6 +99,8 @@ class updateEntryFragment : Fragment() {
         if (new_day == -1 && new_hour == -1) { // Day and time were not changed
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
+                update_value,
+                args.currentEntry.value_unit,
                 args.currentEntry.minutes,
                 args.currentEntry.hour,
                 args.currentEntry.day,
@@ -109,19 +108,7 @@ class updateEntryFragment : Fragment() {
                 args.currentEntry.year,
                 update_descrip
             )
-
-            for (item in args.currentEntryValue) {
-                val updatedEntryValue = EntryValue(
-                    item.entryValId,
-                    args.currentEntry.entryId,
-                    update_value,
-                    item.value_unit
-                )
-                entryViewModel.updateEntryValue(updatedEntryValue)
-            }
-
             entryViewModel.updateEntry(updatedEntry)
-
             findNavController().navigate(R.id.action_updateEntryFragment_to_entryFragment)
 
             Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()
@@ -129,6 +116,8 @@ class updateEntryFragment : Fragment() {
         } else if (new_hour == -1) { //Only day was changed
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
+                update_value,
+                args.currentEntry.value_unit,
                 args.currentEntry.minutes,
                 args.currentEntry.hour,
                 new_day,
@@ -136,15 +125,6 @@ class updateEntryFragment : Fragment() {
                 new_year,
                 update_descrip
             )
-            for (item in args.currentEntryValue) {
-                val updatedEntryValue = EntryValue(
-                    item.entryValId,
-                    args.currentEntry.entryId,
-                    update_value,
-                    item.value_unit
-                )
-                entryViewModel.updateEntryValue(updatedEntryValue)
-            }
             entryViewModel.updateEntry(updatedEntry)
             findNavController().navigate(R.id.action_updateEntryFragment_to_entryFragment)
 
@@ -152,8 +132,8 @@ class updateEntryFragment : Fragment() {
         } else if (new_day == -1) { // Only hour was changed
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
-//                update_value,
-//                args.currentEntry.value_unit,
+                update_value,
+                args.currentEntry.value_unit,
                 new_minute,
                 new_hour,
                 args.currentEntry.day,
@@ -161,23 +141,15 @@ class updateEntryFragment : Fragment() {
                 args.currentEntry.year,
                 update_descrip
             )
-            for (item in args.currentEntryValue) {
-                val updatedEntryValue = EntryValue(
-                    item.entryValId,
-                    args.currentEntry.entryId,
-                    update_value,
-                    item.value_unit
-                )
-                entryViewModel.updateEntryValue(updatedEntryValue)
-            }
             entryViewModel.updateEntry(updatedEntry)
-
             findNavController().navigate(R.id.action_updateEntryFragment_to_entryFragment)
 
             Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()
         } else { // neither day nor hour was changed
             val updatedEntry = Entry(
                 args.currentEntry.entryId,
+                update_value,
+                args.currentEntry.value_unit,
                 new_minute,
                 new_hour,
                 new_day,
@@ -185,16 +157,6 @@ class updateEntryFragment : Fragment() {
                 new_year,
                 update_descrip
             )
-            for (item in args.currentEntryValue) {
-                val updatedEntryValue = EntryValue(
-                    item.entryValId,
-                    args.currentEntry.entryId,
-                    update_value,
-                    item.value_unit
-                )
-                entryViewModel.updateEntryValue(updatedEntryValue)
-            }
-
             entryViewModel.updateEntry(updatedEntry)
             findNavController().navigate(R.id.action_updateEntryFragment_to_entryFragment)
 
