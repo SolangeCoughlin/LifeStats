@@ -71,7 +71,12 @@ class updateEntryFragment : Fragment() {
             }
 
         view.update_button.setOnClickListener() {
-            updateEntry()
+            if (view.update_value_box.text.isEmpty()){
+                Toast.makeText(requireContext(), "Please enter a value",Toast.LENGTH_SHORT).show()
+            }
+            else {
+                updateEntry()
+            }
         }
 
         view.delete_btn.setOnClickListener() {

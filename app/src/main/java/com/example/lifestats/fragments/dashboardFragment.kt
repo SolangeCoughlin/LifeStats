@@ -16,8 +16,6 @@ import java.util.*
 
 class dashboardFragment : Fragment() {
 
-    private lateinit var entryViewModel: EntryViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

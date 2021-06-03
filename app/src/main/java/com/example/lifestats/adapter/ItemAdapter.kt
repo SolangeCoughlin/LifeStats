@@ -11,7 +11,7 @@ import com.example.lifestats.data.Entry
 import com.example.lifestats.fragments.EntryFragmentDirections
 import kotlinx.android.synthetic.main.data_list_view.view.*
 
-class ItemAdapter ():
+class   ItemAdapter ():
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() { // Refer to book for onClickListener help
 
     private var listItems = emptyList<Entry>()

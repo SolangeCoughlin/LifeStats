@@ -31,7 +31,11 @@ class addEntryFragment : Fragment() {
 
 
         view.add_button.setOnClickListener(){
-            insertEntry()
+            if (value_box.text.isBlank()){
+                Toast.makeText(requireContext(),"Please enter a value",Toast.LENGTH_SHORT).show()
+            }else {
+                insertEntry()
+            }
         }
 
         return view
