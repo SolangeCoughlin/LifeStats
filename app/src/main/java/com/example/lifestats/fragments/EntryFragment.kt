@@ -27,20 +27,21 @@ class EntryFragment() : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_entry, container, false)
 
-        //create adapter and setup recyclerView
+        // Create adapter and setup recyclerView to use it to display the database data
         val adapter = ItemAdapter()
 
         val recyclerView = view.data_view
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Initialize user view model
+        // Assign the EntryViewModel to the variable initialized for it
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel::class.java)
 
-        //use view model to get all entries and set an observer on it
+        // Use view model to get all entries and set an observer on it, so the view is notified when the data changes and needs to be updated
         entryViewModel.getAllEntries.observe(viewLifecycleOwner,
             Observer { entry -> adapter.setData(entry)})
 
+        // When new_entry button is clicked, navigate the user to create a new view
         view.new_entry.setOnClickListener(){
             findNavController().navigate(R.id.action_entryFragment_to_addEntryFragment)
         }
@@ -48,6 +49,5 @@ class EntryFragment() : Fragment() {
         return view
 
     }
-
 
 }

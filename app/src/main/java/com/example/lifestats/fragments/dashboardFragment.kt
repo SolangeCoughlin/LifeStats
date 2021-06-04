@@ -23,12 +23,7 @@ class dashboardFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
-        // Create calendar object and use it to determine today's date
-        val currentDate = Calendar.getInstance()
-        val day = currentDate.get(Calendar.DAY_OF_MONTH)
-        val month = currentDate.get(Calendar.MONTH)
-        val year = currentDate.get(Calendar.YEAR)
-
+        // Clicking the metric button navigates the user to the list view for that metric
         view.metric_button.setOnClickListener(){
             findNavController().navigate(R.id.action_dashboard_to_entryFragment)
         }

@@ -9,10 +9,6 @@ interface EntryDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addEntry(entry: Entry)
 
-    //Week 7 addition - not working
-//    @Insert(onConflict = OnConflictStrategy.IGNORE)
-//    suspend fun addEntryWithEntryValues(entryWithEntryValues: EntryWithEntryValues)
-
     @Delete
     suspend fun deleteEntry(entry: Entry)
 
